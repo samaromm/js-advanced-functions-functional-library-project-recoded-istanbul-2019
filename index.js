@@ -77,13 +77,17 @@ const fi = (function() {
       },
     
     uniq: function(arr,sorted=false,fun=x=>x) {
-      let newArr=[...arr]
-      /*newArr=arr.map(x=>{
-                      if(newArr.includes(fun(x)))return
-                      else return x
-            })
-      return newArr*/
-     return newArr.filter((item, index) => arr.indexOf(item) === index)
+      let newArr=[]
+      let newVal=[]
+      for(let x of arr){
+        let val=fun(x)
+        if(!newVal.includes(val)){
+          newArr.push(x)
+          newVal.push(val)
+        }
+      }
+     return newArr
+     /*.filter((item, index) => arr.indexOf(item) === index)*/
     },
     
     keys: function(obj) {
