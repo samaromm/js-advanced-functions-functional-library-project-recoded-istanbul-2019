@@ -58,6 +58,37 @@ const fi = (function() {
       return newArr
     },
     
+    find: function(col,pre) {
+      for(let i of col){if(pre(i)) return i}
+      return undefined
+    },
+    
+    filter: function(col,pre) {
+      let newCol=[]
+      for(let i of col){if(pre(i)) newCol.push(i)}
+      return newCol
+    },
+    
+    size: function(col) {
+      return Object.keys(col).length
+    },
+    
+    first: function(arr,n=1) {
+      if(n==1)return arr[0]
+      return arr.slice(0,n)
+    },
+    
+    last: function(arr,n=1) {
+      if(n==1)return arr[arr.length-1]
+      return arr.slice(-n)
+    },
+    
+    compact: function(arr) {
+      let newArr=[]
+      arr.map(x=>{if(!x)return; else newArr.push(x)})
+      return newArr
+    },
+    
     sortBy: function(arr,fun) {
       let newArr=[...arr]
       return newArr.sort((a,b)=>fun(a)-fun(b))
